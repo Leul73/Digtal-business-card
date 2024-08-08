@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leul Yosef - Digital Business Card</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="overlay"></div>
+    <!-- Intro Animation -->
+    <div id="intro">
+        <div id="intro-text">
+            <div id="q-letter">Q</div>
+            <div id="company-name">QUANTUM BUSINESS EMPIRE</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display:none;">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://drive.google.com/uc?export=view&id=1OboKBpcekLYqxTZGT5yNvrx8BuEizKzM" alt="Leul Yosef" class="profile-photo">
+                <h1>Leul Yosef</h1>
+                <p>Business Owner</p>
+            </div>
+            <div class="card-body">
+                <a href="mailto:leulyosef9@gmail.com" class="contact-button">Email</a>
+                <a href="tel:0944146818" class="contact-button">Phone</a>
+                <a href="https://www.instagram.com/leulyosef73" class="contact-button">Instagram</a>
+                <a href="https://t.me/richma29" class="contact-button">Telegram</a>
+                <button class="share-button" onclick="shareCard()">Share</button>
+            </div>
+            <div class="card-footer">
+                <p>&copy; 2024 Quantum Business Empire</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function shareCard() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Leul Yosef - Digital Business Card',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert('Share functionality is not supported on this device.');
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('intro').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('overlay').style.display = 'none'; // Hide overlay when content is visible
+            }, 7000); // 7 seconds
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            // Disable print screen key (PrtScn)
+            if (e.key === 'PrintScreen') {
+                e.preventDefault();
+            }
+            // Disable other common screenshot keys
+            if (e.ctrlKey && (e.key === 's' || e.key === 'p')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
